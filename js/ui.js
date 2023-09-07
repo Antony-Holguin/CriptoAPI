@@ -39,12 +39,21 @@ class userInterface{
         .catch(error => console.log(error));
     }
 
-    showResults(result, fromCoin, toCryptoCoin){
+    showResults(fromCoin, toCryptoCoin,result){
         const div = document.querySelector("#resultado");
-        div.className = "alert bg-alert text-primary";
+        const templateStr= `
+        <div class="card bg-warning">
+            <div class="card-body text-light">
+                <h2 class="card-title">Result:</h2>
+                <p>The result of ${fromCoin} to ${toCryptoCoin} is: ${result.toFixed(2)}</p>
+
+            </div>
+        </div>`;
         
-        const resultCoin = document.createElement("p");
-        resultCoin.innerHTML = `The result of ${fromCoin} to ${toCryptoCoin} is result:${resultCoin}`;
-        div.appendChild(resultCoin);
+        div.innerHTML = templateStr;
+
+        // const resultCoin = document.createElement("p");
+        // resultCoin.innerHTML = `The result of ${fromCoin} to ${toCryptoCoin} is result:${resultCoin}`;
+        // div.append(resultCoin);
     }
 }

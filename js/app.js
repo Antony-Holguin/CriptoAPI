@@ -27,14 +27,22 @@ let form = document.getElementById("formulario").addEventListener("submit", func
     }else{
         API.getBitcoinValue(coinSelected,criptoSelected)
         .then(data=> {
+            console.log(data);
+            let from;
+            let to;
+            let value;
             for (const [key,value] of Object.entries(data)) {
                 console.log(`Llave: ${key}`);
-                let from = key;
+                from = key;
                 for (const [llave,valor] of Object.entries(value)) {
-                    console.log(llave,valor);
+                    console.log(llave);
+                    to = llave;
+                    result = valor;
+                    
                 }
                 
-            }     
+            }
+            ui.showResults(from,to,result);    
         })
         .catch(error => console.log(error));
     }
